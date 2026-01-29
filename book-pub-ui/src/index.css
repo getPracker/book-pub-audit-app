@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+.input {
+  @apply block w-full border p-2 rounded mb-2; 
+}

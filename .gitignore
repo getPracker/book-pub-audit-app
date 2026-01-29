@@ -1,0 +1,52 @@
+# =========================
+# Root Level (Monorepo)
+# =========================
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+logs/
+*.log
+
+# Env files
+.env
+.env.*
+
+# =========================
+# Backend (book-pub-api)
+# =========================
+
+book-pub-api/node_modules/
+book-pub-api/dist/
+book-pub-api/build/
+book-pub-api/coverage/
+book-pub-api/*.tsbuildinfo
+
+# Prisma DB
+book-pub-api/prisma/dev.db
+book-pub-api/prisma/dev.db-journal
+
+# =========================
+# Frontend (book-pub-ui)
+# =========================
+
+book-pub-ui/node_modules/
+book-pub-ui/dist/
+book-pub-ui/.vite/
+book-pub-ui/coverage/
+
+# Vite cache
+book-pub-ui/node_modules/.vite
+
+# =========================
+# Misc
+# =========================
+
+tmp/
+.cache/

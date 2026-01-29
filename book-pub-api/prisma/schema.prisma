@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String   @id @default(uuid())
+  name        String
+  role        Role
+  credentials String   // password hash or API key
+  createdAt   DateTime @default(now())
+
+  booksCreated Book[]  @relation("BooksCreated")
+  audits       AuditLog[] @relation("UserAudits")
+}
+
+model Book {
+  id          String   @id @default(uuid())
+  title       String
+  authors     String
+  publishedBy String
+
+  createdBy   String
+  updatedBy   String?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  creator     User     @relation("BooksCreated", fields: [createdBy], references: [id])
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  timestamp DateTime @default(now())
+
+  entity    String
+  entityId  String
+
+  action    AuditAction
+  actorId   String
+
+  diff      Json
+  requestId String?
+
+  actor     User? @relation("UserAudits", fields: [actorId], references: [id])
+
+  @@index([entity])
+  @@index([entityId])
+  @@index([actorId])
+  @@index([action])
+  @@index([timestamp])
+  @@index([entity, entityId])
+}
+
+
+
+enum Role {
+  admin
+  reviewer
+}
+
+enum AuditAction {
+  create
+  update
+  delete
+  restore
+  login
+}
