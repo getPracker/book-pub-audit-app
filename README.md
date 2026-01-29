@@ -206,25 +206,21 @@ curl -H "x-api-key: admin-api-key" "http://localhost:3000/api/audits?entity=Book
 
 ---
 
-# 🧪 Seed Data
+# Pages Frontend
 
-- Admin & Reviewer users  
-- Demo books  
-- Full audit history timeline  
+Login Page
 
-Reset anytime:
-```bash
-npx prisma migrate reset
-```
+![Login page](./images/login_page.png)
 
----
+Home Page
 
-# 🏁 What This Demonstrates
+![Home page](./images/home_page1.png)
 
-- Config‑driven audit architecture  
-- Extensible design  
-- Multi‑sink structured logging  
-- Role‑based audit access  
-- Strong TypeScript layering  
-- Full‑stack integration  
+![Home page](./images/home_page3.png)
+
+Audit Page
+
+![Audit page](./images/audit_page.png)
+
+![Audit page](./images/audit_page2.png)
 
