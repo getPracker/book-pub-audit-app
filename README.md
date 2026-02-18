@@ -35,6 +35,16 @@ A **full‑stack** application demonstrating a config‑driven audit logging sys
   DATABASE_URL="file:./prisma/dev.db"
   LOG_LEVEL=info
   NODE_ENV=development
+  ELASTIC_URL=
+  ELASTIC_INDEX=
+  LOGTAIL_TOKEN=
+  ```
+
+  Create this `.env` with elastic search config available
+  ```
+  DATABASE_URL="file:./prisma/dev.db"
+  LOG_LEVEL=info
+  NODE_ENV=development
   ELASTIC_URL=http://localhost:9200
   ELASTIC_INDEX=book-audit-logs
   LOGTAIL_TOKEN=your_logtail_token
